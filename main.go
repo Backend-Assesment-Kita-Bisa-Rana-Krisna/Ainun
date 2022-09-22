@@ -10,26 +10,33 @@ type Bundle struct {
 	Cake  int
 }
 
-func main() {
-	bundle := Bundle{Name: "Ainun", Cake: 20, Apple: 25}
-	boxCount := countBox(bundle.Cake, bundle.Apple)
-	cakeCount, appleCount := countPartOfBox(bundle.Cake, bundle.Apple, boxCount)
-	fmt.Printf("%v have %d cakes and %d apples. She want to bundle that cakes and apples into boxes and give them to her friends.\n", bundle.Name, bundle.Cake, bundle.Apple)
-	fmt.Printf("How many boxes that %v can make? %d box\n", bundle.Name, boxCount)
-	fmt.Printf("how many cakes and apples every box have? %d cake and %d apple in every box\n", cakeCount, appleCount)
-}
-
-func countBox(cakes int, apples int) int {
-	for i := cakes; i > 0; i-- {
-		if cakes%i == 0 && apples%i == 0 {
+func (u *Bundle) CountBox() int {
+	for i := u.Cake; i > 0; i-- {
+		if u.Cake%i == 0 && u.Apple%i == 0 {
 			return i
 		}
 	}
 	return 0
 }
 
-func countPartOfBox(cakes int, apples int, boxCount int) (cakeCount int, appleCount int) {
-	cakeCount = cakes / boxCount
-	appleCount = apples / boxCount
+func (u *Bundle) CountPartOfBox() (cakeCount int, appleCount int) {
+	cakeCount = u.Cake / u.CountBox()
+	appleCount = u.Apple / u.CountBox()
 	return
+}
+
+func main() {
+	bundle := Bundle{Name: "Ainun", Cake: 20, Apple: 25}
+	boxCount := bundle.CountBox()
+	cakeCount, appleCount := bundle.CountPartOfBox()
+	response := Response(bundle, boxCount, cakeCount, appleCount)
+	fmt.Println(response)
+}
+
+func Response(bundle Bundle, boxCount int, cakeCount int, appleCount int) string{
+	var response string
+	response += fmt.Sprintf("%v have %d cakes and %d apples. She want to bundle that cakes and apples into boxes and give them to her friends.\n", bundle.Name, bundle.Cake, bundle.Apple)
+	response += fmt.Sprintf("How many boxes that %v can make? %d box\n", bundle.Name, boxCount)
+	response += fmt.Sprintf("how many cakes and apples every box have? %d cake and %d apple in every box", cakeCount, appleCount)
+	return response
 }
