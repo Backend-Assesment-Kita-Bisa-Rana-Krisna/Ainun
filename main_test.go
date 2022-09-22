@@ -53,7 +53,6 @@ func TestResponse(t *testing.T) {
 	boxCount = bundle.CountBox()
 	cakeCount, appleCount = bundle.CountPartOfBox()
 	response = Response(bundle, boxCount, cakeCount, appleCount)
-	expect = Response(bundle, boxCount, cakeCount, appleCount)
 	expect = fmt.Sprintf("%v have %d cakes and %d apples. She want to bundle that cakes and apples into boxes and give them to her friends.\n", bundle.Name, bundle.Cake, bundle.Apple)
 	expect += fmt.Sprintf("How many boxes that %v can make? %d box\n", bundle.Name, boxCount)
 	expect += fmt.Sprintf("how many cakes and apples every box have? %d cake and %d apple in every box", cakeCount, appleCount)
