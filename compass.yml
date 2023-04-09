@@ -1,0 +1,17 @@
+name: Ainun
+id: ari:cloud:compass:33f66b3b-a2d1-4e87-a709-5da266935d65:component/b7422da9-f932-4bbc-a3b0-994826f2b1c0/a33dc75a-b4ba-427b-bbb1-58652bed494f
+description: Ainun want to bundle that cakes and apples into boxes and give them to her friends
+configVersion: 1
+typeId: SERVICE
+fields:
+  tier: 4
+links:
+  - name: null
+    type: REPOSITORY
+    url: https://github.com/Backend-Assesment-Kita-Bisa-Rana-Krisna/Ainun
+relationships:
+  DEPENDS_ON: []
+labels:
+  - language:go
+  - source:github
+customFields: null
